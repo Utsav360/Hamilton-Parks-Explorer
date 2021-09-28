@@ -1,0 +1,21 @@
+File Name: app.txt(for Assignment#1)
+
+Statement of Authorships : 
+            "StAuth10244 : I Utsavkumar Patel, Student number 000820474, certify that this material is my original work. No
+                           other person's work has been used without due acknowledgement.
+                           I have not made my work available to anyone else."
+
+
+Application Name : Parks in Hamilton City
+
+Application user by :  Someome who wants to know the locations of parks in Hamilton.
+
+
+Extra Feature added by me which can't be go over with our in-class examples :  
+
+For other than of using class example I used the Print page view by calling the window.print() method 
+as well as I used the example from google Javascript API direction code to modify it which 
+gives the user to enter starting location and used dropdown to select the park .
+Additionally after selecting both Start and End point it shows the direction of maps in driving mode.
+
+

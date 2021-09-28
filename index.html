@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <title> Parks in Hamilton City </title>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- StAuth10244 : I Utsavkumar Patel, 000820474 certify that this material is my original work. 
+                   No other person's work has been used without due acknowledgement.
+                   I have not made my work available to anyone else." 
+--->
+ 
+
+<!-- --- BootStrap libraries with other one -->
+
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  
+
+ <style>
+
+    /* The height and width of the div will become the dimensions of the map! */
+    
+    #map {
+      height: 600px;
+      width: 1400px;
+    }
+    body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      font-family: cursive;
+      font-size: larger;
+      background-color:rgb(180, 125, 85);
+    }
+    #result_msg{
+      font-size: large;
+      font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+      font-weight: bolder;
+      font-size: larger;
+      text-align: center;     
+    }   
+    h1{
+      font-family: 'Courier New', Courier, monospace;
+      font-size:55px;
+      font-weight: bold ;
+      color:rgb(184, 58, 196);
+      background-color: black;
+    }
+    .btncolor{
+      background-color: rgb(105, 132, 133);
+    }
+    #copywright{
+      background-color: black;
+      color: whitesmoke;
+      text-align: center;
+    }
+    .btncolor {  
+      border-radius: 12px;
+      color: black;
+      border: 2px solid #e7e7e7;
+      padding: 10px 20px;
+    }
+   
+    
+  </style>
+
+</head>
+
+<body>
+
+  <!-- Maps Title -->
+  <div class="jumbotron text-center">
+        <h1>Explore Parks in Hamilton</h1>
+  </div>   
+ 
+  <!-- Map div -->
+  <div id="map"></div> 
+  <br />
+
+  <span id="result_msg" text-align="center"></span>
+
+  <div class="jumbotron text-center">    
+      
+
+    <!-- button properties -->
+
+    <button id="all_parks" class="btncolor">ALL Parks</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+   
+    <button id="walkway" class="btncolor">Walkway Park</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+   
+    <button id="waterfront" class="btncolor">Waterfront Park</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+   
+    <button id="sports" class="btncolor">Sports Park</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+   
+    <button id="undev" class="btncolor">Undeveloped Park</button> 
+
+<!---------------------------------------------------------------------------------------------------------------------------------------------------------->    
+    <br /><br/><br/>
+   
+    <button id="home" class="btncolor"> Geolocate  </button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong> OR</strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+   
+    <strong style="font-size:22px; color:rgb(11, 22, 124);"> Start : &nbsp;&nbsp;</strong> 
+   
+<!---------------------------------------------------------------------------------------------------------------------------------------------------------->        
+  
+    <input type="text" id="address" placeholder="123 Main St, Hamilton, On L84 3G6" size="30" style="font-size:22px;"> 
+   
+    <div id="floating-panel"><br>&nbsp;&nbsp;&nbsp;
+   
+      <strong style="font-size:22px; color:rgb(11, 22, 124);">&nbsp;&nbsp;&nbsp; End : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </strong>
+
+      <!-------------------- Park DropDown Selection as a destination-------------------------------------------------------------------------------------------------------------------------------------->     
+      
+      <select id="end" width="30px">
+
+        <option value="Meadowlands, Hamilton, ON L9K 1P8">Joshua Ave Park</option>
+        <option value="1 Hughson St S, Hamilton, ON L8N, Canada">Gore Park</option>
+        <option value="500 King St W, Hamilton, ON L8R">Victoria Park</option>
+        <option value="64 Leander Dr, Hamilton, ON L8L 1N6">Pier 4 Park</option>
+        <option value="885 Mountain Brow Blvd, Hamilton, ON L8W 1R6">Albion Falls Park</option>
+        <option value="96 Mary St, Hamilton, ON L8R 1K4">Beasley Park</option>
+        <option value="115 E 26th St, Hamilton, ON L8V 3L5">Eastmount Park</option>
+        <option value="300 Roxborough Ave, Hamilton, ON L8H 4M3">A.M. Cunningham Park</option>
+        <option value="52 Amberwood Street, Hamilton, ON L8J 2H9">Albion Estates Park</option>
+        <option value="200 Harbour Front Dr, Hamilton, ON L8L 1C8">Bayfront Park</option>
+        <option value="1000 Main St E, Hamilton, ON L8M 1N2">Gage Park</option>
+        <option value="255 Concession St, Hamilton, ON L9A 1B2">Sam Lawrence Park</option>
+
+      </select>
+   
+    </div>
+    <br /><br/>
+    <button id="remove_location"  class="btncolor">Remove Geolocation</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    
+    <!---------------------------Print page view by calling the window.print() method--------------------------------------->
+    <button onclick="window.print()" class="btncolor">Print Page</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    
+    <button id="refresh"  class="btncolor">Refresh Page</button>
+
+  </div>
+
+<!---------------------------------------------------------------------------------------------------------------------------------------------------------->    
+
+
+<!-- Copyright information footer--> 
+
+  <footer id="copywright" > Copyright A#1 @ Utsavkumar Patel (000820474) </footer>
+
+<!----------------- Google Maps WebAPI ----------------------------->
+  <script async
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCbsua4EskTMpwMIvO5vkvTgw35rhCwTfs&callback=initMap">
+  </script>
+ 
+ <!------------------ JS Part ----------------------------->
+
+  <script src="park.js"></script>
+
+  <script>
+
+    // global variables
+    var map, markers = []; 
+    y = document.getElementById("result_msg");
+
+    // All References Links are included here for this Assignment :
+
+    // https://developers.google.com/maps/documentation/javascript/overview
+    // https://developers.google.com/maps/documentation/javascript/cloud-setup
+    // https://developers.google.com/maps/documentation/javascript/get-api-key
+    // https://developers.google.com/maps/documentation/javascript/directions
+    // https://developers.google.com/maps/documentation/javascript/examples/directions-simple
+    // https://www.w3schools.com/
+    // https://kml4earth.appspot.com/icons.html
+    // https://www.w3schools.com/bootstrap4/default.asp
+
+
+    
+
+    // The initMap() function will be called when the above Google Maps JS
+    // library finishes loading.  Notice the URL parameter callback=initMap,
+    // this is how the library knows to call this initMap function when it 
+    // is done loading.  We could change the name of the function in that 
+    // URL if we wanted to call it something different.
+    function initMap()
+    {
+
+
+      // services used to provide directions
+      const directionsService = new google.maps.DirectionsService();
+      const directionsRenderer = new google.maps.DirectionsRenderer();
+
+      // Latitude & Longitude focusing on maps of hamilton area
+      hamilton_focus = { lat: 43.2574, lng: -79.8721 }; 
+
+      
+                  
+      // This will create a new Google Map object, and the variable map will 
+      // contain a reference to the object.  The first argument is the element 
+      // to place the map into, and the 2nd argument is a JSON with keys and 
+      // objects describing how to make the map.  At a minimum we need to 
+      // provide center and zoom values as part of this object.
+      map = new google.maps.Map(document.getElementById("map"), 
+         { 
+             //hamilton focus area when map loads
+             center: hamilton_focus, 
+             zoom:11,  //Zoom level 
+      });
+
+
+      // have the directions renderer work with this map
+      directionsRenderer.setMap(map);
+
+      //function call
+      const onChangeHandler = function () {
+         calculateAndDisplayRoute(directionsService, directionsRenderer);
+      };
+
+      // Set addEventListener on the Start as a origin and End as a destination
+      document.getElementById("address").addEventListener("change", onChangeHandler)
+      document.getElementById("end").addEventListener("change", onChangeHandler);
+
+
+      //set map zoom level
+      map.setZoom(12); 
+      // create the infowindow... we only create ONE infowindow and move it 
+      // around and set its content when a marker is clicked as need be.
+      infowindow = new google.maps.InfoWindow();
+      
+
+      // when marker is clicked on the location it shows the information about the park locations
+      marker_clicked = function() {
+         
+          //infowindow widget to display information about the park
+          infowindow.setContent(this.STRING);
+          //infowindow open
+          infowindow.open(map, this);
+          //set map zoom level
+          new_marker.setZoom(12); 
+      }
+
+      // put markers on the map for all the parks in park.js 
+      for (i = 0; i < park.length; i++)
+        {
+          // set the icon based on the TYPE of the parks in hamilton
+          if (park[i].TYPE == "Waterfront")
+            new_icon = "https://maps.google.com/mapfiles/kml/shapes/picnic.png";            
+          else if (park[i].TYPE == "Sports")
+            new_icon = "http://maps.google.com/mapfiles/kml/shapes/play.png";
+          else if (park[i].TYPE == "Walkway")
+            new_icon = "https://maps.google.com/mapfiles/kml/shapes/parks.png"
+          else 
+            new_icon = "https://maps.google.com/mapfiles/kml/shapes/caution.png";
+
+
+          // create the marker based on the array in the park.js file
+          new_marker = new google.maps.Marker({
+              
+              position: {   
+                            lng: park[i].LONGITUDE,
+                            lat: park[i].LATITUDE        
+                        }, 
+              icon: new_icon,     
+          });
+
+          // put the marker onto the map 
+          new_marker.setMap(map);
+
+          // store the name of the park as a property of the marker object
+          new_marker.NAME = park[i].NAME;
+
+          // store the TYPE of the park as a property of the marker object
+          new_marker.TYPE = park[i].TYPE;
+          
+          // have the info window open when the marker is clicked...
+          new_marker.addListener('click', marker_clicked);
+
+          // pushing data to markers array
+          markers.push(new_marker);
+
+          new_marker.STRING = "<h3> " + park[i].NAME + "</h3>" +"<br>" + 
+                               " Owner Name : "  + park[i].OWNER_NAME  + "<br>" +
+                               " Classification :" + park[i].CLASSIFICATION  + "<br>" +
+                               " Park Type : " + park[i].TYPE  + "<br>" +
+                               " Zoning code : " + park[i].ZONING_CODE ;
+                              
+          // geocoder service object
+          geocoder = new google.maps.Geocoder();
+        }      
+      }
+
+
+      //calculateAndDisplayRoute function is used to show direction in driving mode between the starting location to end
+      function calculateAndDisplayRoute(directionsService, directionsRenderer) {
+          directionsService
+            .route({
+              //Staring location query
+              origin: {
+                query: document.getElementById("address").value,
+              },
+              //destination query
+              destination: {
+                query: document.getElementById("end").value,
+              },
+              //set driving mode as a travel mode
+              travelMode: google.maps.TravelMode.DRIVING,
+            })
+            .then((response) => {
+              directionsRenderer.setDirections(response);
+            })
+            // error message appear when user haven't entered starting location
+            .catch((e) => window.alert(" Please select the starting location " + status));
+      }
+
+
+     
+      // showPositionOnMap function shows the users current position on maps
+      function showPositionOnMap(position)
+      {
+        // create a marker centered at the user's location
+        user_location = new google.maps.Marker({
+
+            position: {
+                        lat: position.coords.latitude, 
+                        lng: position.coords.longitude
+                      },
+            title: "Your Live Location",            
+            icon: "https://maps.google.com/mapfiles/kml/shapes/homegardenbusiness.png",
+        });
+
+        // put the marker onto the map (it will not appear otherwise)
+        user_location.setMap(map);
+
+        // show result msg after the map with changing text css properties
+        y.style.color = "darkblack";
+         
+         // put the latitude and longitude on the page as text
+         y.innerHTML = " <strong>Check Your Live Location is on google maps which is shown by yellow icon...!! <br>" + 
+         " <span>and Latitude & Longitude are : </span></strong><br> " + 
+            position.coords.latitude + ", " + 
+            position.coords.longitude;
+      }
+
+
+     
+
+      // clear the user's current location on maps by clicking the remove home button
+      document.getElementById("remove_location").onclick = function()
+      {
+          // remove the user's current location marker from the maps
+          user_location.setMap(null); 
+          // remove the result message ..
+          y.innerHTML = "";    
+      }
+
+
+      // click event on home button when user click shows current location of user on map
+      document.getElementById("home").onclick = function()
+      {
+          if (navigator.geolocation)
+          {
+                // call showPositionOnMap after finding the user's current location
+                navigator.geolocation.getCurrentPosition(showPositionOnMap,showError);
+          }
+          else
+          {
+                // show error message that geolocation is not supported by the browser
+                y.innerHTML = "Geolocation is not supported by your browser!";
+          }    
+      }
+
+
+         
+      // filterWalkwayPark function to filter and shpw only Walkway Park marker on the map
+      function filterWalkwayPark()
+       {
+          for (i = 0; i < markers.length; i++)
+          {             
+            // filtering Walkway type parks from markers array
+            if (markers[i].TYPE == "Walkway")
+            {
+                // putting only walkway parks marker on the map
+                markers[i].setMap(map);
+            }
+            else  
+              {
+                // take off other markers from the map
+                markers[i].setMap(null);
+              }  
+          }
+       }
+      // calling the filterWalwayPark function on button click
+      document.getElementById("walkway").onclick = filterWalkwayPark;
+
+
+      // filterWaterfrontPark function to filter and put only Waterfront Park marker on the map
+      function filterWaterfrontPark()
+      {
+          for (i = 0; i < markers.length; i++)
+          {
+            // filtering Waterfront type parks from markers array
+            if (markers[i].TYPE == "Waterfront")
+            {
+                // putting only waterfront parks marker on the map
+                markers[i].setMap(map);
+            }
+            else  
+              {
+                // take off other markers from the map
+                markers[i].setMap(null);
+              }  
+          }
+      }
+      // calling the filterWaterfrontPark function on button click
+      document.getElementById("waterfront").onclick = filterWaterfrontPark;
+
+
+      // filterSportsPark function to filter and put only Sports Park on the map
+      function filterSportsPark()
+      {
+          for (i = 0; i < markers.length; i++)
+          {
+            // filtering Sports type parks from markers array
+            if (markers[i].TYPE == "Sports")
+            {
+              // putting only sports parks marker on the map
+                markers[i].setMap(map);
+            }
+            else  
+              {
+                // take off other markers from the map
+                markers[i].setMap(null);
+              }  
+          }
+      }
+      // calling the filterSportsPark function on button click
+      document.getElementById("sports").onclick = filterSportsPark;
+
+
+      // filterUndevelopedPark function to filter and put only UndevelopedPark marker from the map
+      function filterUndevelopedPark()
+      {
+          for (i = 0; i < markers.length; i++)
+          {
+            // filtering Undeveloped type parks from markers array
+            if (markers[i].TYPE == "Undeveloped")
+            {
+                // showing only Undeveloped park marker on the map
+                markers[i].setMap(map);
+            }
+            else  
+              {
+                // take off other markers from the map
+                markers[i].setMap(null);
+              }  
+          }
+      }
+      // calling the filterUndevelopedPark function on button click
+      document.getElementById("undev").onclick = filterUndevelopedPark;
+
+
+      // showAllParks function to display all parks on the map
+      function showAllParks()
+      {
+            // calling the init method to load maps with all park markers
+            initMap();
+            // select zoom level to the park showing area
+            map.setZoom(12);   
+      }
+       // calling the showAllParks function on button click
+      document.getElementById("all_parks").onclick = showAllParks;
+       
+
+      // refreshPage function to refresh the page and maps with clearing input and other screen locations
+      function refreshPage(){
+            // calling the init method to load maps with all park markers
+            initMap();
+            // Clearing the msg text if have already from previous search
+            y.innerHTML = "";
+            // clearing the input box value if previously entered
+            address.value = null;
+      }
+      // calling the refreshPage function to reset everything on refresh button click
+      document.getElementById("refresh").onclick = refreshPage;
+
+
+
+     // showError function 
+     function showError(error) {
+             
+             // set text color to be red 
+             y.style.color = "darkred";
+   
+               switch(error.code) {
+                   // permission denied error
+                   case error.PERMISSION_DENIED:
+                     y.innerHTML = "Error : User denied the request for Geolocation..!"
+                     break;   
+                   // Position unavailable error 
+                   case error.POSITION_UNAVAILABLE:
+                     y.innerHTML = "Error : Location information is unavailable..!"
+                     break;                   
+                   // Time out error
+                   case error.TIMEOUT:
+                     y.innerHTML = "Error : The request to get user location timed out..!"
+                     break;   
+                   // Unknown error 
+                   case error.UNKNOWN_ERROR:
+                     y.innerHTML = "Error : An unknown error occurred..!"
+                     break;   
+               }
+         }
+
+  </script>
+</body>
+
+
+</html>
