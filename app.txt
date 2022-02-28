@@ -6,9 +6,9 @@ Statement of Authorships :
                            I have not made my work available to anyone else."
 
 
-Application Name : Parks in Hamilton City
+Application Name : Hamilton Park Explorer
 
-Application user by :  Someome who wants to know the locations of parks in Hamilton.
+Application user by :  Someome who wants to know the locations of parks in the city of Hamilton.
 
 
 Extra Feature added by me which can't be go over with our in-class examples :  
