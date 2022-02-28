@@ -56,20 +56,51 @@
     }
     .btncolor{
       background-color: rgb(105, 132, 133);
-    }
-    #copywright{
-      background-color: black;
-      color: whitesmoke;
-      text-align: center;
-    }
-    .btncolor {  
       border-radius: 12px;
       color: black;
       border: 2px solid #e7e7e7;
       padding: 10px 20px;
     }
-   
-    
+    .btncolor2{
+      background-color: rgb(212, 53, 41);
+      border-radius: 12px;
+      color: black;
+      border: 2px solid #e7e7e7;
+      padding: 10px 20px;
+    }
+    #copywright{
+      background-color: black;
+      color: whitesmoke;
+      text-align: center;
+    } 
+    .btncolor1{
+      background-color: rgb(49, 175, 192);
+      border-radius: 12px;
+      color: black;
+      border: 2px solid #e7e7e7;
+      padding: 10px 20px;
+    }
+    .btncolor3{
+      background-color: rgb(54, 151, 57);
+      border-radius: 12px;
+      color: black;
+      border: 2px solid #e7e7e7;
+      padding: 10px 20px;
+    }
+    .r-btncolor{
+      background-color: rgb(193, 207, 65);
+      border-radius: 12px;
+      color: black;
+      border: 2px solid #e7e7e7;
+      padding: 10px 20px;
+    }
+    .btncolor-g{
+      background-color: rgb(170, 49, 150);
+      border-radius: 12px;
+      color: black;
+      border: 2px solid #e7e7e7;
+      padding: 10px 20px;
+    }
   </style>
 
 </head>
@@ -90,28 +121,28 @@
   <div class="jumbotron text-center">    
       
 
-    <!-- button properties -->
+    <!-- button properties 
 
     <button id="all_parks" class="btncolor">ALL Parks</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-   
+  -->
     <button id="walkway" class="btncolor">Walkway Park</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
    
-    <button id="waterfront" class="btncolor">Waterfront Park</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <button id="waterfront" class="btncolor1">Waterfront Park</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
    
-    <button id="sports" class="btncolor">Sports Park</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <button id="sports" class="btncolor3">Sports Park</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
    
-    <button id="undev" class="btncolor">Undeveloped Park</button> 
+    <button id="undev" class="btncolor2">Undeveloped Park</button> 
 
 <!---------------------------------------------------------------------------------------------------------------------------------------------------------->    
     <br /><br/><br/>
    
-    <button id="home" class="btncolor"> Geolocate  </button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong> OR</strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <button id="home" class="btncolor-g"> Geolocate  </button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong> OR</strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
    
     <strong style="font-size:22px; color:rgb(11, 22, 124);"> Start : &nbsp;&nbsp;</strong> 
    
 <!---------------------------------------------------------------------------------------------------------------------------------------------------------->        
   
-    <input type="text" id="address" placeholder="123 Main St, Hamilton, On L84 3G6" size="30" style="font-size:22px;"> 
+    <input type="text" id="address" placeholder="XYZ St, Hamilton, On L84 3G6" size="30" style="font-size:22px;"> 
    
     <div id="floating-panel"><br>&nbsp;&nbsp;&nbsp;
    
@@ -138,12 +169,12 @@
    
     </div>
     <br /><br/>
-    <button id="remove_location"  class="btncolor">Remove Geolocation</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <button id="remove_location"  class="r-btncolor">Remove Geolocation</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     
     <!---------------------------Print page view by calling the window.print() method--------------------------------------->
-    <button onclick="window.print()" class="btncolor">Print Page</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <button onclick="window.print()" class="btncolor3">Print Page</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     
-    <button id="refresh"  class="btncolor">Refresh Page</button>
+    <button id="refresh"  class="btncolor1">Refresh Page</button>
 
   </div>
 
@@ -152,7 +183,7 @@
 
 <!-- Copyright information footer--> 
 
-  <footer id="copywright" > Copyright A#1 @ Utsavkumar Patel (000820474) </footer>
+  <footer id="copywright" > Copyright &nbsp; @Utsavkumar Patel </footer>
 
 <!----------------- Google Maps WebAPI ----------------------------->
   <script async
